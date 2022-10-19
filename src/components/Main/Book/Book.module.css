@@ -1,0 +1,262 @@
+.book__arrowLeft {
+    width: 43px;
+    height: 16px;
+    margin: 77px 0 30px 0;
+}
+.book__title {
+    margin-bottom: 48px;
+
+    font-family: "Bebas Neue";
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 64px;
+}
+.book__information {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.photo__conainer {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    width: 544px;
+    height: 472px;
+    margin: 0;
+
+    background-color: #FEE9E2;
+}
+.photo__like {
+    width: 56px;
+    height: 56px;
+
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #313037;
+}
+.photo__like img {
+    width: 18px;
+    height: 16px;
+    display: flex;
+    margin: 0 auto;
+}
+.photo img {
+    display: flex;
+
+    width: 300px;
+    height: 350px;
+    margin: 0 auto;
+}
+.book__details {
+    width: 448px;
+    height: 472px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 72px;
+
+    border-top: 1px solid #E7E7E7;
+}
+.details__price {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 40px 0 24px 0;
+}
+.details__priceTitle {
+    font-family: 'Bebas Neue';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+}
+.details__stars {
+    margin: auto 0;
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+.details__greyStar {
+    color: #D0D0D0;
+}
+.details__description {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Helios';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+}
+.details__descriptionTitle {
+    color: #A8A8A8;
+}
+.details__moreDetails {
+    display: flex;
+    align-items: center;
+    margin: 16px 0 59px 0;
+}
+.moreDetails__title {
+    margin-right: 8px;
+
+    font-family: 'Helios';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.moreDetails__arrowToDown img {
+    display: flex;
+}
+.details__addToCart {
+    width: 448px;
+    height: 56px;
+    margin-bottom: 40px;
+
+    font-family: 'Bebas Neue';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+
+    border: none;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+
+}
+.details__previewBook {
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Helios';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+
+    cursor: pointer;
+}
+.book__detailedDescription {
+    width: 100%;
+    height: 49px;
+
+    display: flex;
+    margin-bottom: 48px;
+    border-bottom: 1px solid #E7E7E7;;
+}
+.detailedDescription__title {
+    width: 161px;
+    height: 100%;
+    text-align: center;
+
+    cursor: pointer;
+}
+.detailedDescription__title:active {
+    border-bottom: 2px solid black;
+}
+.description__text {
+    margin-bottom: 48px;
+}
+.socialNetworks__icons {
+    width: 120px;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 72px;
+}
+.socialNetworks__dots {
+    display: flex;
+}
+.socialNetworks__dot {
+    width: 4px;
+    height: 4px;
+
+    background-color: black;
+    border-radius: 2px;
+}
+.socialNetworks__dot:not(:first-child) {
+    margin-left: 3px;
+}
+.similarBooks {
+    height: 562px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    margin-bottom: 72px;
+}
+.similarBooks__titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+}
+.similarBooks__title {
+    font-family: 'Bebas Neue';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+}
+.similarBooks__arrows {
+    width: 64px;
+    display: flex;
+    justify-content: space-between;
+}
+.similarBooks__bookColumns {
+    display: flex;
+    justify-content: space-between;
+}
+.bookColumns__book {
+    height: 453px;
+    width: 352px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bookColumns__photoContainer {
+    height: 264px;
+    margin-bottom: 20px;
+
+    background-color: #D7E4FD;
+}
+.bookColumns__photo img {
+    height: 264px;
+    width: 226px;
+    display: block;
+    margin: 0 auto;
+}
+.bookColumns__title {
+    font-family: 'Bebas Neue';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+.bookColumns__authors {
+    font-family: 'Helios';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #A8A8A8;
+}
+.bookColumns__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bookColumns__priceTitle {
+    font-family: 'Bebas Neue';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+}
+.bookColumns__stars {
+    width: 112px;
+    letter-spacing: 4px;
+    font-size: 18px;
+}
+.bookColumns__greyStar {
+    color: #D0D0D0;
+}
