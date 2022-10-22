@@ -1,8 +1,6 @@
 import styles from './Header.module.css';
-import Favorites from '../../icon/Favorites.svg'
-import Сart from '../../icon/Сart.svg'
-import privateArea from '../../icon/privateArea.svg'
-import {Search} from "./Search";
+import { IconCart, IconHeart, IconUser } from '../../assets';
+import { Search } from './Search';
 
 export const Header = () => {
   return (
@@ -11,12 +9,18 @@ export const Header = () => {
         <div className={styles.header__title}>BOOKSTORE</div>
         <Search />
         <div className={styles.header__icons}>
-          <div className={styles.icons__like}><img src={Favorites} alt=""/></div>
-          <div className={styles.icons__cart}><img src={Сart} alt=""/></div>
-          <div className={styles.icons__privateArea}><img src={privateArea} alt=""/></div>
+          <div className={styles.icons__like}>
+            <IconHeart />
+          </div>
+          <div className={styles.icons__cart}>
+            <IconCart />
+          </div>
+          <div className={styles.icons__privateArea}>
+            <IconUser />
+          </div>
         </div>
       </div>
     </header>
   );
-}
+};
 

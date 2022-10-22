@@ -1,25 +1,23 @@
-import React from "react";
+import { useEffect, useState } from 'react';
+
+import { IconArrowLeft, IconArrowRight } from '../../../assets';
 import styles from './NewReleasesBooks.module.css';
-import {NewReleasesOneBook} from "./NewReleasesOneBook";
-import rightArrow from '../../../icon/similarBooks__rightArrow.svg'
-import leftArrow from '../../../icon/similarBooks__leftArrow.svg'
-import {Newsletter} from "./Newsletter";
-import {Copyright} from "./Copyright";
+import { NewReleasesOneBook } from './NewReleasesOneBook';
+import { Newsletter } from './Newsletter';
+import { Copyright } from './Copyright';
 
 
-export function NewReleasesBooks(props: any) {
-  const [open, setOpen] = React.useState(false)
+export function NewReleasesBooks (props: any) {
+  const [open, setOpen] = useState(false);
 
-  const [books, setBooks] = React.useState<any[]>([]);
+  const [books, setBooks] = useState<any[]>([]);
 
-  React.useEffect(() => {
-    fetch('https://api.itbook.store/1.0/new')
-      .then((response) => {
-        return response.json()
-      })
-      .then((json) => {
-        setBooks(json.books)
-      })
+  useEffect(() => {
+    fetch('https://api.itbook.store/1.0/new').then((response) => {
+      return response.json();
+    }).then((json) => {
+      setBooks(json.books);
+    });
   }, []);
 
 
@@ -31,12 +29,14 @@ export function NewReleasesBooks(props: any) {
 
         {/*)}*/}
         {books.map(book =>
-          <NewReleasesOneBook book={book} key={book.isbn13}/>
+          <NewReleasesOneBook book={book} key={book.isbn13} />,
         )}
       </div>
       <div className={styles.pages}>
         <div className={styles.pagesContainer}>
-          <div className={styles.pagesArrow}><img src={leftArrow} alt="leftArrow"/></div>
+          <div className={styles.pagesArrow}>
+            <IconArrowLeft />
+          </div>
           <div className={styles.pagesTitle}>Prev</div>
         </div>
         <div className={styles.pagesNumbers}>
@@ -48,11 +48,13 @@ export function NewReleasesBooks(props: any) {
         </div>
         <div className={styles.pagesContainer}>
           <div className={styles.pagesTitle}>Next</div>
-          <div className={styles.pagesArrow}><img src={rightArrow} alt="rightArrow"/></div>
+          <div className={styles.pagesArrow}>
+            <IconArrowRight />
+          </div>
         </div>
       </div>
-      <Newsletter/>
-      <Copyright/>
+      <Newsletter />
+      <Copyright />
     </div>
   );
 }
