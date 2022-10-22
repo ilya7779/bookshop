@@ -8,23 +8,31 @@ import {Copyright} from "./Copyright";
 
 
 export function NewReleasesBooks(props: any) {
+  const [open, setOpen] = React.useState(false)
+
+  const [books, setBooks] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    fetch('https://api.itbook.store/1.0/new')
+      .then((response) => {
+        return response.json()
+      })
+      .then((json) => {
+        setBooks(json.books)
+      })
+  }, []);
+
 
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>New Releases Books</h1>
       <div className={styles.containerNewReleasesBooks}>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
-        <NewReleasesOneBook props={props}/>
+        {/*{open && (*/}
+
+        {/*)}*/}
+        {books.map(book =>
+          <NewReleasesOneBook book={book} key={book.isbn13}/>
+        )}
       </div>
       <div className={styles.pages}>
         <div className={styles.pagesContainer}>

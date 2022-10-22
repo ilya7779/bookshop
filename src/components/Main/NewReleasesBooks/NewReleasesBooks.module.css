@@ -11,8 +11,6 @@
     line-height: 64px;
 }
 .containerNewReleasesBooks {
-    height: 1960px;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -24,6 +22,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 49px;
+}
+.books__book:last-child {
+    margin-bottom: 72px;
 }
 .books__photoContainer {
     height: 264px;

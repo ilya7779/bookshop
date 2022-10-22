@@ -1,0 +1,19 @@
+.header__container {
+    height: 104px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__title {
+    font-family: 'Bebas Neue';
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 64px;
+}
+.header__search {
+    height: 56px;
+    width: 542px;
+}
+.search__input {
+    border: 1px solid #E7E7E7;
+}
