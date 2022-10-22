@@ -1,10 +1,10 @@
-import {Header} from "../Header/Header";
-import React from "react";
+import styles from './Footer.module.css';
 
-export function Footer() {
+export const Footer = () => {
   return (
-    <div className="footer">
-
+    <div className={styles.copyright}>
+      <div className={styles.copyright__bookstore}>©2022 Bookstore</div>
+      <div className={styles.copyright__rights}>All rights reserved</div>
     </div>
   );
-}
+};

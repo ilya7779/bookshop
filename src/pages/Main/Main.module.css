@@ -1,0 +1,40 @@
+.wrapper {
+  margin: 72px 0;
+
+}
+
+.title {
+  margin-bottom: 48px;
+
+  font-family: 'Bebas Neue';
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+}
+
+.containerNewReleasesBooks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pages {
+  height: 146px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*margin: 48px 0 72px;*/
+  border-top: 1px solid #E7E7E7;
+}
+
+.pagesContainer {
+  width: 67px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagesNumbers {
+  width: 175px;
+  display: flex;
+  justify-content: space-between;
+}

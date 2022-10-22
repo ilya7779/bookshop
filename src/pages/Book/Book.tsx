@@ -9,11 +9,10 @@ import {
   IconFacebook,
   IconHeart,
   IconTwitter,
-} from '../../../assets';
-import { Newsletter } from '../NewReleasesBooks/Newsletter';
-import { Copyright } from '../NewReleasesBooks/Copyright';
+} from '../../assets';
+import { Newsletter } from '../../components';
 
-export function Book (props: any) {
+export const Book = (props: any) => {
 
   const [items, setItems] = useState({
     title: '',
@@ -102,7 +101,9 @@ export function Book (props: any) {
           <div className={styles.socialNetworks__dot}></div>
         </div>
       </div>
+
       <Newsletter />
+
       <div className={styles.similarBooks}>
         <div className={styles.similarBooks__titleContainer}>
           <div className={styles.similarBooks__title}>SIMILAR BOOKS</div>
@@ -157,7 +158,6 @@ export function Book (props: any) {
           </div>
         </div>
       </div>
-      <Copyright />
     </div>
   );
-}
+};

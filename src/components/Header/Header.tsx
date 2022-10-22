@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import { IconCart, IconHeart, IconUser } from '../../assets';
-import { Search } from './Search';
+import { Search } from '../Search';
 
 export const Header = () => {
   return (
@@ -23,4 +23,3 @@ export const Header = () => {
     </header>
   );
 };
-

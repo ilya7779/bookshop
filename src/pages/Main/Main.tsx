@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { IconArrowLeft, IconArrowRight } from '../../../assets';
-import styles from './NewReleasesBooks.module.css';
-import { NewReleasesOneBook } from './NewReleasesOneBook';
-import { Newsletter } from './Newsletter';
-import { Copyright } from './Copyright';
+import styles from './Main.module.css';
+import { IconArrowLeft, IconArrowRight } from '../../assets';
+import { BookCard, Newsletter } from '../../components';
 
-
-export function NewReleasesBooks (props: any) {
-  const [open, setOpen] = useState(false);
+export const Main = (props: any) => {
 
   const [books, setBooks] = useState<any[]>([]);
 
@@ -20,16 +16,12 @@ export function NewReleasesBooks (props: any) {
     });
   }, []);
 
-
   return (
-    <div className={styles.wrapper}>
+    <main className={styles.wrapper}>
       <h1 className={styles.title}>New Releases Books</h1>
       <div className={styles.containerNewReleasesBooks}>
-        {/*{open && (*/}
-
-        {/*)}*/}
         {books.map(book =>
-          <NewReleasesOneBook book={book} key={book.isbn13} />,
+          <BookCard book={book} key={book.isbn13} />,
         )}
       </div>
       <div className={styles.pages}>
@@ -53,8 +45,8 @@ export function NewReleasesBooks (props: any) {
           </div>
         </div>
       </div>
+
       <Newsletter />
-      <Copyright />
-    </div>
+    </main>
   );
-}
+};
