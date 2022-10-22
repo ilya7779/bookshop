@@ -1,8 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+
 import styles from './BookCard.module.css';
 
 export const BookCard = (props: any) => {
+  const navigate = useNavigate();
+
+  const openBookHandler = () => {
+    // указываем переменную-параметр для использования в другой компоненте
+    navigate(`/${props.book.isbn13}`);
+  };
+
   return (
-    <div>
+    <div className={styles.book__card} onClick={() => openBookHandler()}>
       <div className={styles.books__book}>
         <div className={styles.books__photoContainer}>
           <div className={styles.books__photo}>

@@ -1,3 +1,7 @@
+.book__card {
+  cursor: pointer;
+}
+
 .books__book {
   height: 453px;
   width: 352px;

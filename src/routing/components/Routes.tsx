@@ -7,7 +7,8 @@ export const Routes: FC = () => {
   return (
     <RoutesSource>
       <Route path='/' element={<Main />} />
-      <Route path='/books/9781617294136' element={<Book />} />
+      {/*Добавили в path параметр для useParams - чтобы открывать разные книги*/}
+      <Route path='/:isbn13' element={<Book />} />
     </RoutesSource>
   );
 };

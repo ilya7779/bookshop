@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './Book.module.css';
 import {
@@ -13,8 +14,11 @@ import {
 import { Newsletter } from '../../components';
 
 export const Book = (props: any) => {
+  // Здесь берем из адресной строки переменную-параметр, которую передавали в navigate
+  const { isbn13 } = useParams();
+  const navigate = useNavigate();
 
-  const [items, setItems] = useState({
+  const [book, setBook] = useState({
     title: '',
     subtitle: '',
     authors: '',
@@ -31,38 +35,45 @@ export const Book = (props: any) => {
   });
 
   useEffect(() => {
-    fetch('https://api.itbook.store/1.0/books/9781617294136').then((response) => {
+    fetch(`https://api.itbook.store/1.0/books/${isbn13}`).then((response) => {
       return response.json();
     }).then((json) => {
-      setItems(json);
+      setBook(json);
     });
   }, []);
 
+  const backHandler = () => {
+    navigate('/');
+  };
+
   return (
     <div className={styles.book}>
-      <IconArrowLongLeft />
-      <h1 className={styles.book__title}>{items.title}, </h1>
+      <button onClick={() => backHandler()}>
+        <IconArrowLongLeft />
+      </button>
+
+      <h1 className={styles.book__title}>{book.title}, </h1>
       <div className={styles.book__information}>
         <div className={styles.photo__conainer}>
           <div className={styles.photo__like}>
             <IconHeart />
           </div>
-          <div className={styles.photo}><img src={items.image} alt='BookImg' /></div>
+          <div className={styles.photo}><img src={book.image} alt='BookImg' /></div>
         </div>
         <div className={styles.book__details}>
           <div className={styles.details__price}>
-            <div className={styles.details__priceTitle}>{items.price}</div>
-            <div className={styles.details__stars}>{items.rating}&#9733;&#9733;&#9733;&#9733;
+            <div className={styles.details__priceTitle}>{book.price}</div>
+            <div className={styles.details__stars}>{book.rating}&#9733;&#9733;&#9733;&#9733;
               <span className={styles.details__greyStar}>&#9733;</span>
             </div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Authors</div>
-            <div className={styles.details__descriptionName}>{items.authors}</div>
+            <div className={styles.details__descriptionName}>{book.authors}</div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Publisher</div>
-            <div className={styles.details__descriptionName}>{items.publisher}, {items.year}</div>
+            <div className={styles.details__descriptionName}>{book.publisher}, {book.year}</div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Language</div>
@@ -87,7 +98,7 @@ export const Book = (props: any) => {
         <div className={styles.detailedDescription__title}>Authors</div>
         <div className={styles.detailedDescription__title}>Reviews</div>
       </div>
-      <div className={styles.description__text}>{items.desc}</div>
+      <div className={styles.description__text}>{book.desc}</div>
       <div className={styles.socialNetworks__icons}>
         <div className={styles.socialNetworks__facebook}>
           <IconFacebook />
@@ -119,26 +130,26 @@ export const Book = (props: any) => {
         <div className={styles.similarBooks__bookColumns}>
           <div className={styles.bookColumns__book}>
             <div className={styles.bookColumns__photoContainer}>
-              <div className={styles.bookColumns__photo}><img src={items.image} alt='' /></div>
+              <div className={styles.bookColumns__photo}><img src={book.image} alt='' /></div>
             </div>
-            <div className={styles.bookColumns__title}>{items.title}</div>
-            <div className={styles.bookColumns__authors}>by {items.authors}, {items.publisher} {items.year}</div>
+            <div className={styles.bookColumns__title}>{book.title}</div>
+            <div className={styles.bookColumns__authors}>by {book.authors}, {book.publisher} {book.year}</div>
             <div className={styles.bookColumns__price}>
-              <div className={styles.bookColumns__priceTitle}>{items.price}</div>
-              <div className={styles.bookColumns__stars}>{items.rating}&#9733;&#9733;&#9733;&#9733;
+              <div className={styles.bookColumns__priceTitle}>{book.price}</div>
+              <div className={styles.bookColumns__stars}>{book.rating}&#9733;&#9733;&#9733;&#9733;
                 <span className={styles.bookColumns__greyStar}>&#9733;</span>
               </div>
             </div>
           </div>
           <div className={styles.bookColumns__book}>
             <div className={styles.bookColumns__photoContainer}>
-              <div className={styles.bookColumns__photo}><img src={items.image} alt='' /></div>
+              <div className={styles.bookColumns__photo}><img src={book.image} alt='' /></div>
             </div>
-            <div className={styles.bookColumns__title}>{items.title}</div>
-            <div className={styles.bookColumns__authors}>by {items.authors}, {items.publisher} {items.year}</div>
+            <div className={styles.bookColumns__title}>{book.title}</div>
+            <div className={styles.bookColumns__authors}>by {book.authors}, {book.publisher} {book.year}</div>
             <div className={styles.bookColumns__price}>
-              <div className={styles.bookColumns__priceTitle}>{items.price}</div>
-              <div className={styles.bookColumns__stars}>{items.rating}&#9733;&#9733;&#9733;&#9733;
+              <div className={styles.bookColumns__priceTitle}>{book.price}</div>
+              <div className={styles.bookColumns__stars}>{book.rating}&#9733;&#9733;&#9733;&#9733;
                 <span className={styles.bookColumns__greyStar}>&#9733;</span>
               </div>
             </div>
