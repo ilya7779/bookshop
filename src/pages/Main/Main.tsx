@@ -1,24 +1,28 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Main.module.css';
 import { IconArrowLeft, IconArrowRight } from '../../assets';
 import { BookCard, Newsletter } from '../../components';
+import { newBooksSelector, setNewBooksAC } from '../../store';
 
 export const Main = () => {
+  const dispatch = useDispatch();
 
-  const [bookList, setBookList] = useState<any[]>([]);
+  const bookList = useSelector(newBooksSelector);
 
   useEffect(() => {
     fetch('https://api.itbook.store/1.0/new').then((response) => {
       return response.json();
     }).then((json) => {
-      setBookList(json.books);
+      // dispatch({ type: 'SET_NEW_BOOKS', payload: json.books });
+      dispatch(setNewBooksAC(json.books));
     });
   }, []);
 
   // оптимизация
   const books = useMemo(() => {
-    return bookList.map(book =>
+    return bookList.map((book: any) =>
       <BookCard book={book} key={book.isbn13} />,
     );
   }, [bookList]);
