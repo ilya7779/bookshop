@@ -13,3 +13,4 @@ export const AppLayout: FC = () => {
     </div>
   );
 };
+

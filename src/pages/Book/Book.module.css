@@ -1,7 +1,10 @@
-.book__arrowLeft {
-    width: 43px;
-    height: 16px;
-    margin: 77px 0 30px 0;
+.book__arrowLongLeft {
+    margin: 72px 0 32px 0;
+
+    background-color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 .book__title {
     margin-bottom: 48px;
@@ -26,7 +29,7 @@
 
     background-color: #FEE9E2;
 }
-.photo__like {
+.photo__heart {
     width: 56px;
     height: 56px;
 
@@ -34,15 +37,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
+    color: #fff;
     background-color: #313037;
 }
-.photo__like img {
-    width: 18px;
-    height: 16px;
-    display: flex;
-    margin: 0 auto;
-}
+/*.photo__heart img {*/
+/*    width: 18px;*/
+/*    height: 16px;*/
+/*    display: flex;*/
+/*    margin: 0 auto;*/
+/*}*/
 .photo img {
     display: flex;
 
@@ -110,7 +115,7 @@
 .details__addToCart {
     width: 448px;
     height: 56px;
-    margin-bottom: 40px;
+    margin-bottom: auto;
 
     font-family: 'Bebas Neue';
     font-size: 24px;

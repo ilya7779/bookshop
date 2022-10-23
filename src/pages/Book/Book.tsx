@@ -48,14 +48,14 @@ export const Book = (props: any) => {
 
   return (
     <div className={styles.book}>
-      <button onClick={() => backHandler()}>
+      <button className={styles.book__arrowLongLeft} onClick={() => backHandler()}>
         <IconArrowLongLeft />
       </button>
 
       <h1 className={styles.book__title}>{book.title}, </h1>
       <div className={styles.book__information}>
         <div className={styles.photo__conainer}>
-          <div className={styles.photo__like}>
+          <div className={styles.photo__heart}>
             <IconHeart />
           </div>
           <div className={styles.photo}><img src={book.image} alt='BookImg' /></div>
@@ -156,13 +156,13 @@ export const Book = (props: any) => {
           </div>
           <div className={styles.bookColumns__book}>
             <div className={styles.bookColumns__photoContainer}>
-              <div className={styles.bookColumns__photo}><img src={props.image} alt='' /></div>
+              <div className={styles.bookColumns__photo}><img src={book.image} alt='' /></div>
             </div>
-            <div className={styles.bookColumns__title}>{props.title}</div>
-            <div className={styles.bookColumns__authors}>by {props.authors}, {props.publisher} {props.year}</div>
+            <div className={styles.bookColumns__title}>{book.title}</div>
+            <div className={styles.bookColumns__authors}>by {book.authors}, {book.publisher} {book.year}</div>
             <div className={styles.bookColumns__price}>
-              <div className={styles.bookColumns__priceTitle}>{props.price}</div>
-              <div className={styles.bookColumns__stars}>{props.rating}&#9733;&#9733;&#9733;&#9733;
+              <div className={styles.bookColumns__priceTitle}>{book.price}</div>
+              <div className={styles.bookColumns__stars}>{book.rating}&#9733;&#9733;&#9733;&#9733;
                 <span className={styles.bookColumns__greyStar}>&#9733;</span>
               </div>
             </div>
