@@ -2,8 +2,10 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './BookCard.module.css';
 
+
 export const BookCard = (props: any) => {
   const navigate = useNavigate();
+
 
   const openBookHandler = () => {
     // указываем переменную-параметр для использования в другой компоненте
