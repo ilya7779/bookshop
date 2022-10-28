@@ -11,11 +11,15 @@ import {
   IconHeart,
   IconTwitter,
 } from '../../assets';
-import {BookCard, Newsletter} from '../../components';
+import {Newsletter} from '../../components';
 import {useDispatch, useSelector} from "react-redux";
 import {getCurrentBookTC, currentBookSelector} from "../../store";
 
-export const Book = (props: any) => {
+
+
+
+
+export const Book = () => {
   // Здесь берем из адресной строки переменную-параметр, которую передавали в navigate
   const { isbn13 } = useParams();
 

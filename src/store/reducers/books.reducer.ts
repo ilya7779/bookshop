@@ -1,6 +1,13 @@
 import * as t from './../actions';
+import {Book} from "../../types";
 
-const initialState = {
+type BooksState = {
+  newBooks: Array<Book>,
+  //newBooks: Book[],
+  currentBook: null | Book
+}
+
+const initialState: BooksState = {
   newBooks: [],
   currentBook: null,
 };

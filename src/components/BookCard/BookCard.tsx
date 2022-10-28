@@ -1,15 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 
 import styles from './BookCard.module.css';
+import {Book} from "../../types";
 
+type BookCardProps = {
+  book: Book
+}
 
-export const BookCard = (props: any) => {
+export const BookCard = (props: BookCardProps) => {
   const navigate = useNavigate();
-
+  const {book: { isbn13, image, title, authors, publisher, year, price, rating }} = props;
 
   const openBookHandler = () => {
     // указываем переменную-параметр для использования в другой компоненте
-    navigate(`/${props.book.isbn13}`);
+    navigate(`/${isbn13}`);
   };
 
   return (
@@ -17,15 +21,15 @@ export const BookCard = (props: any) => {
       <div className={styles.books__book}>
         <div className={styles.books__photoContainer}>
           <div className={styles.books__photo}>
-            <img src={props.book.image} alt='' />
+            <img src={image} alt='' />
           </div>
         </div>
-        <div className={styles.books__title}>{props.book.title}</div>
-        <div className={styles.books__authors}>by {props.book.authors}, {props.book.publisher} {props.book.year}</div>
+        <div className={styles.books__title}>{title}</div>
+        <div className={styles.books__authors}>by {authors}, {publisher} {year}</div>
         <div className={styles.books__price}>
-          <div className={styles.books__priceTitle}>{props.book.price}</div>
+          <div className={styles.books__priceTitle}>{price}</div>
           <div className={styles.books__stars}>
-            {props.book.rating}&#9733;&#9733;&#9733;&#9733;
+            {rating}&#9733;&#9733;&#9733;&#9733;
             <span className={styles.books__greyStar}>&#9733;</span>
           </div>
         </div>
