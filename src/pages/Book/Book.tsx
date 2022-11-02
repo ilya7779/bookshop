@@ -13,7 +13,7 @@ import {
 } from '../../assets';
 import {Newsletter} from '../../components';
 import {useDispatch, useSelector} from "react-redux";
-import {getCurrentBookTC, currentBookSelector} from "../../store";
+import {getCurrentBookTC, currentBookSelector, useAppDispatch} from "../../store";
 
 
 
@@ -24,13 +24,12 @@ export const Book = () => {
   const { isbn13 } = useParams();
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const currentBook = useSelector(currentBookSelector);
 
 
   useEffect(() => {
-    // @ts-ignore
-    dispatch(getCurrentBookTC( isbn13 ))
+    dispatch(getCurrentBookTC( isbn13 as string ))
   }, []);
 
   const backHandler = () => {

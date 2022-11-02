@@ -1,14 +1,17 @@
 import * as t from './actions.types';
+import {Dispatch} from "redux";
+import {Book} from "../../types";
+import {AppThunk} from "../store";
 
-export const setNewBooksAC = (payload: any) => {
+export const setNewBooksAC = (payload: Array<Book>) => {
   return {type: t.SET_NEW_BOOKS, payload};
 };
-export const setCurrentBookAC = (payload: any) => {
+export const setCurrentBookAC = (payload: Book) => {
   return {type: t.SET_CURRENT_BOOK, payload};
 };
 
-export const getBooksTC = () => {
-  return (dispatch: any) => {
+export const getBooksTC = (): AppThunk => {
+  return (dispatch) => {
     fetch('https://api.itbook.store/1.0/new').then((response) => {
       return response.json();
     }).then((json) => {
@@ -19,7 +22,7 @@ export const getBooksTC = () => {
   }
 }
 export const getCurrentBookTC = (isbn13: string) => {
-  return (dispatch: any) => {
+  return (dispatch: Dispatch) => {
     fetch(`https://api.itbook.store/1.0/books/${isbn13}`).then((response) => {
       return response.json();
     }).then((json) => {
