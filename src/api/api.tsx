@@ -1,16 +1,14 @@
-import axios from "axios";
-//
-//
-// export const booksAPI =
-//   axios.get('https://api.itbook.store/1.0/books/9781617294136')
-//     .then(response => {
-//     console.log(response.data)
-//   })
-//     .catch(error => {
-//     console.error(error);
-//   })
-// @ts-ignore
-// @ts-ignore
+import axios from 'axios';
 
+import { interceptors } from './interceptors';
 
-// export default booksAPI;
+export const api = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL,
+  timeout: 180000,
+  // headers: { 'Content-Type': 'application/json' },
+});
+
+interceptors.forEach((interceptor) => {
+  interceptor(api);
+});
+
