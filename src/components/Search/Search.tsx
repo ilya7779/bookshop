@@ -8,15 +8,6 @@ export const Search = () => {
   const [books, setBooks] = useState<any[]>([]);
   const [value, setValue] = useState('');
 
-  useEffect(() => {
-    // fetch('https://api.itbook.store/1.0/search/mongodb')
-    fetch('https://api.itbook.store/1.0/new').then((response) => {
-      return response.json();
-    }).then((json) => {
-      setBooks(json.books);
-    });
-  }, []);
-
   const filteredBooks = books.filter(books => {
     return books.title.toLowerCase().includes(value.toLowerCase());
   });
