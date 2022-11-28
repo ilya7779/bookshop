@@ -22,7 +22,7 @@ export const Main = () => {
 
   // оптимизация
   const books = useMemo(() => {
-    return bookList.map((book: any) =>
+    return bookList.map((book) =>
       <BookCard book={book} key={book.isbn13} />,
     );
   }, [bookList]);
@@ -35,9 +35,11 @@ export const Main = () => {
   return (
     <main className={styles.wrapper}>
       <h1 className={styles.title}>New Releases Books</h1>
+
       <div className={styles.containerNewReleasesBooks}>
         {books}
       </div>
+
       <div className={styles.pages}>
         <div className={styles.pagesContainer}>
           <div className={styles.pagesArrow}>

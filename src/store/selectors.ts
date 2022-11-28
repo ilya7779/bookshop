@@ -1,1 +1,3 @@
-export const newBooksSelector = (state: any) => state.books.newBooks;
+import type { RootState } from './store';
+
+export const newBooksSelector = (state: RootState) => state.books.newBooks;

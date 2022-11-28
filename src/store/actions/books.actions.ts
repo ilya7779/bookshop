@@ -1,5 +1,12 @@
-import * as t from './actions.types';
+import type { Book } from '../../types';
 
-export const setNewBooksAC = (payload: any) => {
-  return { type: t.SET_NEW_BOOKS, payload };
+export const setNewBooksAC = (payload: Book[]) => {
+  return { type: 'books/SET_NEW_BOOKS', payload } as const;
 };
+
+//region Types
+type SetNewBooksAction = ReturnType<typeof setNewBooksAC>;
+
+export type BooksActions = SetNewBooksAction;
+//endregion
+

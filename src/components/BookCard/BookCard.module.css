@@ -37,6 +37,13 @@
   line-height: 32px;
 }
 
+.books__subTitle {
+  /*font-family: 'Bebas Neue';*/
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
 .books__authors {
   font-family: 'Helios';
   font-size: 16px;

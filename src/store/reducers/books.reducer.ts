@@ -1,12 +1,17 @@
-import * as t from './../actions';
+import type { BooksActions } from '../actions';
+import type { Book } from '../../types';
 
-const initialState = {
+type BooksState = {
+  newBooks: Book[],
+};
+
+const initialState: BooksState = {
   newBooks: [],
 };
 
-export const booksReducer = (state = initialState, action: any) => {
+export const booksReducer = (state = initialState, action: BooksActions): BooksState => {
   switch (action.type) {
-    case t.SET_NEW_BOOKS: {
+    case 'books/SET_NEW_BOOKS': {
       return { ...state, newBooks: action.payload };
     }
 
