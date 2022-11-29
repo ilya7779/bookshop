@@ -2,11 +2,11 @@ import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import styles from './Main.module.css';
-import { IconArrowLeft, IconArrowRight } from '../../assets';
-import { BookCard, Newsletter } from '../../components';
+import { BookCard, Newsletter, Pagination } from '../../components';
 import {
   getNewBooksTC,
-  newBooksSelector, searchBooksTC,
+  newBooksSelector,
+  searchBooksTC,
   searchResultSelector,
   searchTermSelector,
   useAppDispatch,
@@ -20,6 +20,10 @@ export const Main = () => {
   const searchTerm = useSelector(searchTermSelector);
   const isSearch = searchTerm.length !== 0;
 
+  const searchBooks = (pageNumber = 1) => {
+    dispatch(searchBooksTC(pageNumber));
+  };
+
   useEffect(() => {
     dispatch(getNewBooksTC());
   }, []);
@@ -27,7 +31,7 @@ export const Main = () => {
   useEffect(() => {
     if (!isSearch) return;
 
-    dispatch(searchBooksTC());
+    searchBooks();
   }, [searchTerm]);
 
   // оптимизация
@@ -54,28 +58,10 @@ export const Main = () => {
         {books}
       </div>
 
-      <div className={styles.pages}>
-        <div className={styles.pagesContainer}>
-          <div className={styles.pagesArrow}>
-            <IconArrowLeft />
-          </div>
-          <div className={styles.pagesTitle}>Prev</div>
-        </div>
-        <div className={styles.pagesNumbers}>
-          <div className={styles.pagesNumber}>1</div>
-          <div className={styles.pagesNumber}>2</div>
-          <div className={styles.pagesNumber}>3</div>
-          <div className={styles.pagesNumber}>...</div>
-          <div className={styles.pagesNumber}>6</div>
-        </div>
-        <div className={styles.pagesContainer}>
-          <div className={styles.pagesTitle}>Next</div>
-          <div className={styles.pagesArrow}>
-            <IconArrowRight />
-          </div>
-        </div>
-      </div>
-
+      {isSearch ? <Pagination
+        total={Number(searchResult?.total ?? 1)}
+        fetchNewData={searchBooks}
+      /> : null}
       <Newsletter />
     </main>
   );

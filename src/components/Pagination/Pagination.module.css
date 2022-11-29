@@ -1,0 +1,46 @@
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 72px;
+  padding-top: 48px;
+  border-top: 1px solid #E7E7E7;
+}
+
+.navigationButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navigationButtonTitle {
+  font-family: 'Helios';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #313037;
+}
+
+.pageNumbersWrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.pageNumber {
+  font-family: 'Helios';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #A8A8A8;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.activePage {
+  color: #313037;
+}
