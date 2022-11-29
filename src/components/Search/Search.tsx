@@ -1,27 +1,29 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import debounce from 'lodash.debounce';
 
 import styles from './Search.module.css';
 import { IconSearch } from '../../assets';
+import { setSearchTermAC, useAppDispatch } from '../../store';
 
 export const Search = () => {
+  const dispatch = useAppDispatch();
 
-  const [books, setBooks] = useState<any[]>([]);
   const [value, setValue] = useState('');
 
-  const filteredBooks = books.filter(books => {
-    return books.title.toLowerCase().includes(value.toLowerCase());
-  });
+  const setSearchTerm = useCallback(
+    debounce((value: string) => {
+      dispatch(setSearchTermAC(value));
+    }, 600),
+    [],
+  );
 
-  // const searchHandler = async (event: React.ChangeEvent<HTMLInputElement>)=> {
-  //   let key = event.target.value;
-  //   if (key) {
-  //     let result = await fetch(`https://api.itbook.store/1.0/search/mongodb/${key}`);
-  //     result = await result.json()
-  //     if(result) {
-  //       setBooks(result)
-  //     }
-  //   }
-  // }
+  useEffect(() => {
+    setSearchTerm(value);
+  }, [value]);
+
+  const searchHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div>
@@ -31,18 +33,13 @@ export const Search = () => {
             className={styles.search__input}
             placeholder='Search'
             type='text'
-            // onChange={searchHandler} />
-            onChange={(event) => setValue(event.target.value)}
+            value={value}
+            onChange={(e) => searchHandler(e)}
           />
           <IconSearch />
-          {/*<img src={iconSearch} alt='' />*/}
         </form>
       </div>
       <div className={styles.books}>
-
-        {/*{filteredBooks.map((book, isbn13) =>*/}
-        {/*  <NewReleasesOneBook book={book} key={isbn13}/>*/}
-        {/*)}*/}
       </div>
     </div>
   );

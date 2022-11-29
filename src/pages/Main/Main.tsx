@@ -4,23 +4,40 @@ import { useSelector } from 'react-redux';
 import styles from './Main.module.css';
 import { IconArrowLeft, IconArrowRight } from '../../assets';
 import { BookCard, Newsletter } from '../../components';
-import { getNewBooksTC, newBooksSelector, useAppDispatch } from '../../store';
+import {
+  getNewBooksTC,
+  newBooksSelector, searchBooksTC,
+  searchResultSelector,
+  searchTermSelector,
+  useAppDispatch,
+} from '../../store';
 
 export const Main = () => {
   const dispatch = useAppDispatch();
 
   const bookList = useSelector(newBooksSelector);
+  const searchResult = useSelector(searchResultSelector);
+  const searchTerm = useSelector(searchTermSelector);
+  const isSearch = searchTerm.length !== 0;
 
   useEffect(() => {
     dispatch(getNewBooksTC());
   }, []);
 
+  useEffect(() => {
+    if (!isSearch) return;
+
+    dispatch(searchBooksTC());
+  }, [searchTerm]);
+
   // оптимизация
   const books = useMemo(() => {
-    return bookList.map((book) =>
+    const source = isSearch ? (searchResult?.books ?? []) : bookList;
+
+    return source.map((book) =>
       <BookCard book={book} key={book.isbn13} />,
     );
-  }, [bookList]);
+  }, [bookList, searchResult, isSearch]);
 
   // без оптимизации
   // const books = bookList.map(book =>
@@ -29,7 +46,9 @@ export const Main = () => {
 
   return (
     <main className={styles.wrapper}>
-      <h1 className={styles.title}>New Releases Books</h1>
+      <h1 className={styles.title}>
+        {isSearch ? `'${searchTerm}' search results` : 'New Releases Books'}
+      </h1>
 
       <div className={styles.containerNewReleasesBooks}>
         {books}

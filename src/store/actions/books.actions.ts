@@ -1,4 +1,4 @@
-import { getBook, getBooks } from '../../api/books';
+import { getBook, getBooks, searchBooks, SearchBooksResult } from '../../api/books';
 import type { Book, BookFull } from '../../types';
 import type { AppThunk } from '../store';
 
@@ -8,6 +8,14 @@ export const setNewBooksAC = (payload: Book[]) => {
 
 export const setFullBookAC = (payload: BookFull | null) => {
   return { type: 'books/SET_FULL_BOOK', payload } as const;
+};
+
+export const setSearchResultAC = (payload: SearchBooksResult | null) => {
+  return { type: 'books/SET_SEARCH_RESULT', payload } as const;
+};
+
+export const setSearchTermAC = (payload: string) => {
+  return { type: 'books/SET_SEARCH_TERM', payload } as const;
 };
 
 export const setBooksLoadingAC = (payload: boolean) => {
@@ -49,11 +57,34 @@ export const getFullBookTC = (isbn13: string): AppThunk => async (dispatch) => {
   }
 };
 
+export const searchBooksTC = (page = 1): AppThunk => async (dispatch, getState) => {
+  dispatch(setBooksLoadingAC(true));
+
+  const state = getState();
+  const searchTerm = state.books.searchTerm;
+
+  try {
+    const result = await searchBooks({ searchTerm, page });
+    dispatch(setSearchResultAC(result.data));
+  } catch (e) {
+    console.error(e);
+  } finally {
+    dispatch(setBooksLoadingAC(false));
+  }
+};
+
 //region Types
 type SetNewBooksAction = ReturnType<typeof setNewBooksAC>;
 type SetFullBookAction = ReturnType<typeof setFullBookAC>;
+type SetSearchResultAction = ReturnType<typeof setSearchResultAC>;
+type SetSearchTermAction = ReturnType<typeof setSearchTermAC>;
 type SetBooksLoadingAction = ReturnType<typeof setBooksLoadingAC>;
 
-export type BooksActions = SetNewBooksAction | SetFullBookAction | SetBooksLoadingAction;
+export type BooksActions =
+  SetNewBooksAction
+  | SetFullBookAction
+  | SetSearchResultAction
+  | SetSearchTermAction
+  | SetBooksLoadingAction;
 //endregion
 
