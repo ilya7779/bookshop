@@ -11,9 +11,9 @@ import {
   IconHeart,
   IconTwitter,
 } from '../../assets';
-import {Newsletter} from '../../components';
-import {useDispatch, useSelector} from "react-redux";
-import {getCurrentBookTC, currentBookSelector, useAppDispatch} from "../../store";
+import { Newsletter } from '../../components';
+import { useSelector } from "react-redux";
+import { getCurrentBookTC, currentBookSelector, useAppDispatch } from "../../store";
 
 
 
@@ -29,7 +29,7 @@ export const Book = () => {
 
 
   useEffect(() => {
-    dispatch(getCurrentBookTC( isbn13 as string ))
+    dispatch(getCurrentBookTC(isbn13 as string))
   }, []);
 
   const backHandler = () => {
