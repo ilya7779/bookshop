@@ -30,11 +30,6 @@
 
     border: none;
 }
-.newsletter__formInput:active,
-.newsletter__formInput:hover {
-    padding-left: 5px;
-    font-size: 24px;
-}
 .newsletter__formButton {
     width: 169px;
 
@@ -53,4 +48,40 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+}
+
+@media (max-width: 991px) {
+    .newsletter {
+        padding: 25px 35px;
+    }
+    .newsletter__formInput {
+        width: 80%;
+        padding-left: 18px;
+    }
+    .newsletter__formButton {
+        width: 20%;
+        font-size: 18px;
+    }
+}
+@media (max-width: 479px) {
+    .newsletter {
+        height: 108px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+    .newsletter__title {
+        font-size: 20px;
+        line-height: 8px;
+    }
+    .newsletter__description {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+    .newsletter__form {
+        height: 28px;
+    }
+    .newsletter__formButton {
+        font-size: 9px;
+    }
 }

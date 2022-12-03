@@ -11,3 +11,15 @@
   line-height: 24px;
   color: #A8A8A8;
 }
+@media (max-width: 767px) {
+  .copyright {
+    height: 40px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 479px) {
+  .copyright {
+    height: 20px;
+    font-size: 9px;
+  }
+}

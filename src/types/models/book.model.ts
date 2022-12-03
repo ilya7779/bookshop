@@ -1,14 +1,27 @@
 export type Book = {
-  title: string
-  subtitle: string
-  authors: string
-  publisher: string
-  isbn10: number
-  isbn13: number
-  year: number
-  rating: number
-  desc: string
-  price: number
-  image: string
-  url: string
+  image: string,
+  isbn13: string,
+  price: string,
+  subtitle: string,
+  title: string,
+  url: string,
+}
+
+export type BookFull = {
+  authors: string,
+  desc: string,
+  error: string,
+  image: string,
+  isbn10: string,
+  isbn13: string,
+  language: string,
+  pages: string,
+  pdf?: { ['Free eBook']: string }
+  price: string,
+  publisher: string,
+  rating: string,
+  subtitle: string,
+  title: string,
+  url: string,
+  year: string,
 }

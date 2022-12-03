@@ -1,11 +1,7 @@
 .book__arrowLongLeft {
     margin: 72px 0 32px 0;
-
-    background-color: #fff;
-    cursor: pointer;
-    border: none;
-    outline: none;
 }
+
 .book__title {
     margin-bottom: 48px;
 
@@ -14,12 +10,14 @@
     font-weight: 700;
     line-height: 64px;
 }
+
 .book__information {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.photo__conainer {
+
+.photo__container {
     display: flex;
     align-content: flex-start;
     flex-direction: column;
@@ -29,7 +27,8 @@
 
     background-color: #FEE9E2;
 }
-.photo__heart {
+
+.photo__like {
     width: 56px;
     height: 56px;
 
@@ -42,12 +41,7 @@
     color: #fff;
     background-color: #313037;
 }
-/*.photo__heart img {*/
-/*    width: 18px;*/
-/*    height: 16px;*/
-/*    display: flex;*/
-/*    margin: 0 auto;*/
-/*}*/
+
 .photo img {
     display: flex;
 
@@ -55,6 +49,7 @@
     height: 350px;
     margin: 0 auto;
 }
+
 .book__details {
     width: 448px;
     height: 472px;
@@ -65,26 +60,31 @@
 
     border-top: 1px solid #E7E7E7;
 }
+
 .details__price {
     display: flex;
     justify-content: space-between;
 
     margin: 40px 0 24px 0;
 }
+
 .details__priceTitle {
     font-family: 'Bebas Neue';
     font-size: 40px;
     font-weight: 700;
     line-height: 60px;
 }
+
 .details__stars {
     margin: auto 0;
     font-size: 14px;
     letter-spacing: 3px;
 }
+
 .details__greyStar {
     color: #D0D0D0;
 }
+
 .details__description {
     display: flex;
     justify-content: space-between;
@@ -93,14 +93,17 @@
     font-weight: 400;
     line-height: 32px;
 }
+
 .details__descriptionTitle {
     color: #A8A8A8;
 }
+
 .details__moreDetails {
     display: flex;
     align-items: center;
     margin: 16px 0 59px 0;
 }
+
 .moreDetails__title {
     margin-right: 8px;
 
@@ -109,9 +112,11 @@
     font-weight: 400;
     line-height: 24px;
 }
+
 .moreDetails__arrowToDown img {
     display: flex;
 }
+
 .details__addToCart {
     width: 448px;
     height: 56px;
@@ -129,6 +134,7 @@
     cursor: pointer;
 
 }
+
 .details__previewBook {
     display: flex;
     justify-content: center;
@@ -140,6 +146,7 @@
 
     cursor: pointer;
 }
+
 .book__detailedDescription {
     width: 100%;
     height: 49px;
@@ -148,6 +155,7 @@
     margin-bottom: 48px;
     border-bottom: 1px solid #E7E7E7;;
 }
+
 .detailedDescription__title {
     width: 161px;
     height: 100%;
@@ -155,12 +163,15 @@
 
     cursor: pointer;
 }
+
 .detailedDescription__title:active {
     border-bottom: 2px solid black;
 }
+
 .description__text {
     margin-bottom: 48px;
 }
+
 .socialNetworks__icons {
     width: 120px;
     height: 24px;
@@ -170,9 +181,11 @@
 
     margin-bottom: 72px;
 }
+
 .socialNetworks__dots {
     display: flex;
 }
+
 .socialNetworks__dot {
     width: 4px;
     height: 4px;
@@ -180,9 +193,11 @@
     background-color: black;
     border-radius: 2px;
 }
+
 .socialNetworks__dot:not(:first-child) {
     margin-left: 3px;
 }
+
 .similarBooks {
     height: 562px;
     display: flex;
@@ -192,27 +207,32 @@
 
     margin-bottom: 72px;
 }
+
 .similarBooks__titleContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 48px;
 }
+
 .similarBooks__title {
     font-family: 'Bebas Neue';
     font-size: 40px;
     font-weight: 700;
     line-height: 60px;
 }
+
 .similarBooks__arrows {
     width: 64px;
     display: flex;
     justify-content: space-between;
 }
+
 .similarBooks__bookColumns {
     display: flex;
     justify-content: space-between;
 }
+
 .bookColumns__book {
     height: 453px;
     width: 352px;
@@ -221,24 +241,28 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .bookColumns__photoContainer {
     height: 264px;
     margin-bottom: 20px;
 
     background-color: #D7E4FD;
 }
+
 .bookColumns__photo img {
     height: 264px;
     width: 226px;
     display: block;
     margin: 0 auto;
 }
+
 .bookColumns__title {
     font-family: 'Bebas Neue';
     font-size: 24px;
     font-weight: 700;
     line-height: 32px;
 }
+
 .bookColumns__authors {
     font-family: 'Helios';
     font-size: 16px;
@@ -246,22 +270,161 @@
     line-height: 24px;
     color: #A8A8A8;
 }
+
 .bookColumns__price {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .bookColumns__priceTitle {
     font-family: 'Bebas Neue';
     font-size: 24px;
     font-weight: 700;
     line-height: 32px;
 }
+
 .bookColumns__stars {
     width: 112px;
     letter-spacing: 4px;
     font-size: 18px;
 }
+
 .bookColumns__greyStar {
     color: #D0D0D0;
 }
+
+@media (max-width: 1199px) {
+    .photo__container {
+        margin-right: 30px;
+    }
+
+    .bookColumns__book {
+        margin-right: 20px;
+    }
+
+    .bookColumns__book:last-child {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .book__arrowLongLeft {
+        margin: 15px 0 25px 0;
+    }
+
+    .photo__container {
+        width: 300px;
+        height: 390px;
+        margin-right: 30px;
+    }
+
+    .book__title {
+        margin-bottom: 28px;
+        font-size: 38px;
+    }
+    .photo__like {
+        width: 40px;
+        height: 40px;
+    }
+    .photo__like svg {
+        width: 18px;
+        height: 18px;
+    }
+    .book__details {
+        width: 385px;
+        height: 390px;
+        margin-bottom: 45px;
+    }
+    .details__priceTitle {
+        font-size: 32px;
+    }
+    .details__price {
+        margin: 0;
+    }
+    .details__addToCart {
+        width: 350px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .details__moreDetails {
+        margin: 15px 0 30px 0;
+    }
+}
+@media (max-width: 767px) {
+    .book__information {
+        flex-direction: column;
+    }
+    .similarBooks {
+        display: none;
+    }
+}
+@media (max-width: 479px) {
+    .book__arrowLongLeft {
+        margin: 10px 0 0 0;
+    }
+    .book__title {
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    .photo img {
+        width: 250px;
+        height: 300px;
+    }
+    .photo__container {
+        width: 280px;
+        height: 340px;
+        margin-right: 0;
+    }
+    .book__details {
+        width: 280px;
+        height: 268px;
+        margin-bottom: 26px;
+    }
+    .details__priceTitle {
+        font-size: 24px;
+    }
+    .details__description {
+        font-size: 12px;
+        line-height: 24px;
+    }
+    .moreDetails__title {
+        font-size: 12px;
+    }
+    .moreDetails__arrowToDown svg {
+        width: 12px;
+        height: 12px;
+    }
+    .details__addToCart {
+        width: 278px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .details__moreDetails {
+        margin: 15px 0 10px 0;
+    }
+    .details__previewBook {
+        font-size: 12px;
+    }
+    .book__detailedDescription {
+        height: 30px;
+        margin-bottom: 15px;
+        font-size: 12px;
+    }
+    .description__text {
+        margin-bottom: 15px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .socialNetworks__icons {
+        width: 90px;
+        margin-bottom: 15px;
+    }
+    .socialNetworks__icons svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+

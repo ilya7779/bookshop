@@ -1,6 +1,6 @@
 import styles from './Newsletter.module.css';
 
-export const Newsletter = (props: any) => {
+export const Newsletter = () => {
   return (
     <div className={styles.newsletter}>
       <h2 className={styles.newsletter__title}>SUBSCRIBE TO NEWSLETTER</h2>

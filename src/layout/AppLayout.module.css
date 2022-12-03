@@ -1,4 +1,15 @@
 .app__wrapper {
-    margin: 0 auto;
     max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+@media (max-width: 767px) {
+    .app__wrapper {
+        padding: 0 30px;
+    }
+}
+@media (max-width: 479px) {
+    .app__wrapper {
+        padding: 0 20px;
+    }
 }

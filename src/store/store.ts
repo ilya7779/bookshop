@@ -1,23 +1,33 @@
-import {AnyAction, applyMiddleware, combineReducers, createStore} from 'redux';
-import {composeWithDevTools, devToolsEnhancer} from '@redux-devtools/extension';
-import thunk, {ThunkAction, ThunkDispatch} from 'redux-thunk'
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { composeWithDevToolsDevelopmentOnly } from '@redux-devtools/extension';
 
-import {booksReducer} from './reducers';
-import {useDispatch} from "react-redux";
+import { booksReducer } from './reducers';
+import type { BooksActions } from './actions';
+
+const composeEnhancers = composeWithDevToolsDevelopmentOnly({
+  traceLimit: 20,
+  trace: true,
+});
+
+let middlewares = [thunk];
+if (process.env.NODE_ENV === 'development') {
+  middlewares = [...middlewares]; // здесь можно добавить мидлвары, необходимые только development
+}
 
 const rootReducer = combineReducers({
   books: booksReducer,
 });
 
-export const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk),
-  // devToolsEnhancer(),
-));
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
 
-export const useAppDispatch = useDispatch<AppDispatch>;
+//region Types
+export type AppActions = BooksActions;
+export type AppThunk = ThunkAction<void, RootState, unknown, AppActions>
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = ThunkDispatch<RootState, unknown, AppActions>;
+//endregion
 
-export type RootState = ReturnType<typeof store.getState>
-// export type AppDispatch = typeof store.dispatch
-export type AppDispatch = ThunkDispatch<RootState, unknown, AnyAction>
-
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, AnyAction>
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

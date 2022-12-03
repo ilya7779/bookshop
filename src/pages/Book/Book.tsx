@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import styles from './Book.module.css';
@@ -12,33 +13,27 @@ import {
   IconTwitter,
 } from '../../assets';
 import { Newsletter } from '../../components';
-import { useSelector } from "react-redux";
-import { getCurrentBookTC, currentBookSelector, useAppDispatch } from "../../store";
-
-
-
-
+import { fullBookSelector, getFullBookTC, setFullBookAC, useAppDispatch } from '../../store';
 
 export const Book = () => {
   // Здесь берем из адресной строки переменную-параметр, которую передавали в navigate
-  const { isbn13 } = useParams();
-
+  const { isbn13 } = useParams<{ isbn13: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const currentBook = useSelector(currentBookSelector);
 
+  const book = useSelector(fullBookSelector);
 
   useEffect(() => {
-    dispatch(getCurrentBookTC(isbn13 as string))
+    dispatch(getFullBookTC(isbn13 || ''));
+
+    return () => {
+      dispatch(setFullBookAC(null));
+    };
   }, []);
 
   const backHandler = () => {
     navigate('/');
   };
-
-  if (currentBook === null) {
-    return null;
-  }
 
   return (
     <div className={styles.book}>
@@ -46,28 +41,28 @@ export const Book = () => {
         <IconArrowLongLeft />
       </button>
 
-      <h1 className={styles.book__title}>{currentBook.title}, </h1>
+      <h1 className={styles.book__title}>{book?.title}, </h1>
       <div className={styles.book__information}>
-        <div className={styles.photo__conainer}>
-          <div className={styles.photo__heart}>
+        <div className={styles.photo__container}>
+          <div className={styles.photo__like}>
             <IconHeart />
           </div>
-          <div className={styles.photo}><img src={currentBook.image} alt='BookImg' /></div>
+          <div className={styles.photo}><img src={book?.image} alt='BookImg' /></div>
         </div>
         <div className={styles.book__details}>
           <div className={styles.details__price}>
-            <div className={styles.details__priceTitle}>{currentBook.price}</div>
-            <div className={styles.details__stars}>{currentBook.rating}&#9733;&#9733;&#9733;&#9733;
+            <div className={styles.details__priceTitle}>{book?.price}</div>
+            <div className={styles.details__stars}>{book?.rating}&#9733;&#9733;&#9733;&#9733;
               <span className={styles.details__greyStar}>&#9733;</span>
             </div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Authors</div>
-            <div className={styles.details__descriptionName}>{currentBook.authors}</div>
+            <div className={styles.details__descriptionName}>{book?.authors}</div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Publisher</div>
-            <div className={styles.details__descriptionName}>{currentBook.publisher}, {currentBook.year}</div>
+            <div className={styles.details__descriptionName}>{book?.publisher}, {book?.year}</div>
           </div>
           <div className={styles.details__description}>
             <div className={styles.details__descriptionTitle}>Language</div>
@@ -92,7 +87,7 @@ export const Book = () => {
         <div className={styles.detailedDescription__title}>Authors</div>
         <div className={styles.detailedDescription__title}>Reviews</div>
       </div>
-      <div className={styles.description__text}>{currentBook.desc}</div>
+      <div className={styles.description__text}>{book?.desc}</div>
       <div className={styles.socialNetworks__icons}>
         <div className={styles.socialNetworks__facebook}>
           <IconFacebook />
@@ -121,48 +116,48 @@ export const Book = () => {
             </div>
           </div>
         </div>
+        <div className={styles.similarBooks__bookColumns}>
+          <div className={styles.bookColumns__book}>
+            <div className={styles.bookColumns__photoContainer}>
+              <div className={styles.bookColumns__photo}><img src={book?.image} alt='' /></div>
+            </div>
+            <div className={styles.bookColumns__title}>{book?.title}</div>
+            <div className={styles.bookColumns__authors}>by {book?.authors}, {book?.publisher} {book?.year}</div>
+            <div className={styles.bookColumns__price}>
+              <div className={styles.bookColumns__priceTitle}>{book?.price}</div>
+              <div className={styles.bookColumns__stars}>{book?.rating}&#9733;&#9733;&#9733;&#9733;
+                <span className={styles.bookColumns__greyStar}>&#9733;</span>
+              </div>
+            </div>
+          </div>
+          <div className={styles.bookColumns__book}>
+            <div className={styles.bookColumns__photoContainer}>
+              <div className={styles.bookColumns__photo}><img src={book?.image} alt='' /></div>
+            </div>
+            <div className={styles.bookColumns__title}>{book?.title}</div>
+            <div className={styles.bookColumns__authors}>by {book?.authors}, {book?.publisher} {book?.year}</div>
+            <div className={styles.bookColumns__price}>
+              <div className={styles.bookColumns__priceTitle}>{book?.price}</div>
+              <div className={styles.bookColumns__stars}>{book?.rating}&#9733;&#9733;&#9733;&#9733;
+                <span className={styles.bookColumns__greyStar}>&#9733;</span>
+              </div>
+            </div>
+          </div>
 
-        {/*<div className={styles.similarBooks__bookColumns}>*/}
-        {/*  <div className={styles.bookColumns__book}>*/}
-        {/*    <div className={styles.bookColumns__photoContainer}>*/}
-        {/*      <div className={styles.bookColumns__photo}><img src={currentBook.image} alt='' /></div>*/}
-        {/*    </div>*/}
-        {/*    <div className={styles.bookColumns__title}>{currentBook.title}</div>*/}
-        {/*    <div className={styles.bookColumns__authors}>by {currentBook.authors}, {currentBook.publisher} {currentBook.year}</div>*/}
-        {/*    <div className={styles.bookColumns__price}>*/}
-        {/*      <div className={styles.bookColumns__priceTitle}>{currentBook.price}</div>*/}
-        {/*      <div className={styles.bookColumns__stars}>{currentBook.rating}&#9733;&#9733;&#9733;&#9733;*/}
-        {/*        <span className={styles.bookColumns__greyStar}>&#9733;</span>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.bookColumns__book}>*/}
-        {/*    <div className={styles.bookColumns__photoContainer}>*/}
-        {/*      <div className={styles.bookColumns__photo}><img src={currentBook.image} alt='' /></div>*/}
-        {/*    </div>*/}
-        {/*    <div className={styles.bookColumns__title}>{currentBook.title}</div>*/}
-        {/*    <div className={styles.bookColumns__authors}>by {currentBook.authors}, {currentBook.publisher} {currentBook.year}</div>*/}
-        {/*    <div className={styles.bookColumns__price}>*/}
-        {/*      <div className={styles.bookColumns__priceTitle}>{currentBook.price}</div>*/}
-        {/*      <div className={styles.bookColumns__stars}>{currentBook.rating}&#9733;&#9733;&#9733;&#9733;*/}
-        {/*        <span className={styles.bookColumns__greyStar}>&#9733;</span>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*  <div className={styles.bookColumns__book}>*/}
-        {/*    <div className={styles.bookColumns__photoContainer}>*/}
-        {/*      <div className={styles.bookColumns__photo}><img src={currentBook.image} alt='' /></div>*/}
-        {/*    </div>*/}
-        {/*    <div className={styles.bookColumns__title}>{currentBook.title}</div>*/}
-        {/*    <div className={styles.bookColumns__authors}>by {currentBook.authors}, {currentBook.publisher} {currentBook.year}</div>*/}
-        {/*    <div className={styles.bookColumns__price}>*/}
-        {/*      <div className={styles.bookColumns__priceTitle}>{currentBook.price}</div>*/}
-        {/*      <div className={styles.bookColumns__stars}>{currentBook.rating}&#9733;&#9733;&#9733;&#9733;*/}
-        {/*        <span className={styles.bookColumns__greyStar}>&#9733;</span>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+          <div className={styles.bookColumns__book}>
+            <div className={styles.bookColumns__photoContainer}>
+              <div className={styles.bookColumns__photo}><img src={book?.image} alt='' /></div>
+            </div>
+            <div className={styles.bookColumns__title}>{book?.title}</div>
+            <div className={styles.bookColumns__authors}>by {book?.authors}, {book?.publisher} {book?.year}</div>
+            <div className={styles.bookColumns__price}>
+              <div className={styles.bookColumns__priceTitle}>{book?.price}</div>
+              <div className={styles.bookColumns__stars}>{book?.rating}&#9733;&#9733;&#9733;&#9733;
+                <span className={styles.bookColumns__greyStar}>&#9733;</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

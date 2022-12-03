@@ -6,16 +6,29 @@
 
     border-bottom: 1px solid #E7E7E7;
 }
+
 .header__title {
     font-family: 'Bebas Neue';
     font-size: 42px;
     font-weight: 700;
     line-height: 64px;
 }
-.header__search {
-    height: 56px;
-    width: 542px;
+
+.header__icons {
+    display: flex;
+    gap: 35px;
 }
-.search__input {
-    border: 1px solid #E7E7E7;
+
+@media (max-width: 767px) {
+    .header__title {
+        font-size: 32px;
+    }
+    .header__icons {
+        gap: 10px;
+    }
+}
+@media (max-width: 479px) {
+    .header__container {
+        height: 60px;
+    }
 }

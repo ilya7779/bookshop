@@ -1,6 +1,5 @@
 .wrapper {
   margin: 72px 0;
-
 }
 
 .title {
@@ -15,26 +14,23 @@
 .containerNewReleasesBooks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 72px;
 }
 
-.pages {
-  height: 146px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /*margin: 48px 0 72px;*/
-  border-top: 1px solid #E7E7E7;
+@media (max-width: 991px) {
+  .title {
+    font-size: 48px;
+    margin-bottom: 30px;
+  }
 }
-
-.pagesContainer {
-  width: 67px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.pagesNumbers {
-  width: 175px;
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 479px) {
+  .wrapper {
+    margin: 20px 0;
+  }
+  .title {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
 }
