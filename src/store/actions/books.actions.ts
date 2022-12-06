@@ -1,25 +1,26 @@
+import * as t from './actions.types'
 import { getBook, getBooks, searchBooks, SearchBooksResult } from '../../api/books';
 import type { Book, BookFull } from '../../types';
 import type { AppThunk } from '../store';
 
 export const setNewBooksAC = (payload: Book[]) => {
-  return { type: 'books/SET_NEW_BOOKS', payload } as const;
+  return { type: t.SET_NEW_BOOKS, payload } as const;
 };
 
 export const setFullBookAC = (payload: BookFull | null) => {
-  return { type: 'books/SET_FULL_BOOK', payload } as const;
+  return { type: t.SET_FULL_BOOK, payload } as const;
 };
 
 export const setSearchResultAC = (payload: SearchBooksResult | null) => {
-  return { type: 'books/SET_SEARCH_RESULT', payload } as const;
+  return { type: t.SET_SEARCH_RESULT, payload } as const;
 };
 
 export const setSearchTermAC = (payload: string) => {
-  return { type: 'books/SET_SEARCH_TERM', payload } as const;
+  return { type: t.SET_SEARCH_TERM, payload } as const;
 };
 
 export const setBooksLoadingAC = (payload: boolean) => {
-  return { type: 'books/SET_BOOKS_LOADING', payload } as const;
+  return { type: t.SET_BOOKS_LOADING, payload } as const;
 };
 
 export const getNewBooksTC = (): AppThunk => async (dispatch) => {

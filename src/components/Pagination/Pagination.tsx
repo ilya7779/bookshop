@@ -74,6 +74,11 @@ export const Pagination: FC<PaginationProps> = (props) => {
       {page}
     </button>;
   });
+  // const offset = (currentPage - 1) * totalPages; //400
+  console.log(currentPage)
+  const start = (currentPage - 1) * 3;
+  const end = start + 3;
+  const pageNeighbours = pagesElements.slice(start, end);
 
   return (
     <div className={styles.paginationWrapper}>
@@ -88,7 +93,7 @@ export const Pagination: FC<PaginationProps> = (props) => {
       </button>
 
       <div className={styles.pageNumbersWrapper}>
-        {pagesElements}
+        {pageNeighbours}
       </div>
 
       <button
