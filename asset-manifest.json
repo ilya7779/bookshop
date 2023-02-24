@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bookshop/static/css/main.6bcc581d.css",
-    "main.js": "/bookshop/static/js/main.3d42a976.js",
+    "main.js": "/bookshop/static/js/main.1dce6263.js",
     "static/media/Inter-Italic.otf": "/bookshop/static/media/Inter-Italic.46f54e23d28c1a73d10f.otf",
     "static/media/Inter-SemiBold.otf": "/bookshop/static/media/Inter-SemiBold.2669d7fef265fdcd7f63.otf",
     "static/media/bebas-neue-bold.ttf": "/bookshop/static/media/bebas-neue-bold.ea0a2d99a89950317a4f.ttf",
@@ -11,10 +11,10 @@
     "static/media/helios_bold.ttf": "/bookshop/static/media/helios_bold.87c1e4183a554ec7e8a3.ttf",
     "index.html": "/bookshop/index.html",
     "main.6bcc581d.css.map": "/bookshop/static/css/main.6bcc581d.css.map",
-    "main.3d42a976.js.map": "/bookshop/static/js/main.3d42a976.js.map"
+    "main.1dce6263.js.map": "/bookshop/static/js/main.1dce6263.js.map"
   },
   "entrypoints": [
     "static/css/main.6bcc581d.css",
-    "static/js/main.3d42a976.js"
+    "static/js/main.1dce6263.js"
   ]
 }
